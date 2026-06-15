@@ -32,7 +32,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import path
 from rest_framework.routers import SimpleRouter
 
-from plugin_example import views
+from my_plugin import views
 
 router = SimpleRouter()
 urlpatterns = [

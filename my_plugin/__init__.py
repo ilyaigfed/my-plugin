@@ -32,13 +32,13 @@ from testy.plugins.hooks import TestyPluginConfig, hookimpl
 
 
 class ExamplePluginConfig(TestyPluginConfig):
-    package_name = 'plugin_example'
-    verbose_name = 'Plugin example'
-    description = 'It is very simple plugin example'
-    version = '0.2.0'
-    plugin_base_url = 'plugin-example'
+    package_name = 'my_plugin'
+    verbose_name = 'My plugin'
+    description = 'It is very simple my plugin'
+    version = '0.0.1'
+    plugin_base_url = 'my-plugin'
     index_reverse_name = 'upload-file'
-    urls_module = 'plugin_example.urls'
+    urls_module = 'my_plugin.urls'
 
 
 @hookimpl

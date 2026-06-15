@@ -35,7 +35,7 @@ from django.views.generic import ListView
 from rest_framework.generics import CreateAPIView
 from rest_framework.serializers import Serializer
 
-from plugin_example.xlsx_parser_lib.xlsx_parser import XlsxParser
+from my_plugin.xlsx_parser_lib.xlsx_parser import XlsxParser
 
 
 class ProjectListView(ListView):
@@ -63,4 +63,4 @@ class UploadFileApiView(CreateAPIView):
             response_text = f'An error occurred: {ex}'
 
         request.session['response'] = response_text
-        return redirect(reverse('plugins:plugin_example:index'))
+        return redirect(reverse('plugins:my_plugin:index'))
