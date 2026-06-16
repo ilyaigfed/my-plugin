@@ -35,7 +35,7 @@ class ExamplePluginConfig(TestyPluginConfig):
     package_name = 'my_plugin'
     verbose_name = 'My plugin'
     description = 'It is very simple my plugin'
-    version = '0.0.1'
+    version = '0.0.2'
     plugin_base_url = 'my-plugin'
     index_reverse_name = 'upload-file'
     urls_module = 'my_plugin.urls'
