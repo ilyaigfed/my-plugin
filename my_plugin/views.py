@@ -41,7 +41,7 @@ from my_plugin.xlsx_parser_lib.xlsx_parser import XlsxParser
 class ProjectListView(ListView):
     model = Project
     queryset = Project.objects.all()
-    template_name = 'upload.html'
+    template_name = 'indx.html'
     context_object_name = 'projects'
 
 
