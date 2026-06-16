@@ -1,1 +1,1 @@
-recursive-include plugin_example/templates *
+recursive-include my_plugin/templates *
