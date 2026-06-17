@@ -78,10 +78,10 @@ class XlsxParser:
             }
 
             if row_len >= 4:
-                case_kwargs['expected'] = row[4].value
+                case_kwargs['expected'] = row[3].value
 
             if row_len == 5:
-                case_kwargs['description'] = row[5].value
+                case_kwargs['description'] = row[4].value
 
             cases.append(TestCase(**case_kwargs))
 
