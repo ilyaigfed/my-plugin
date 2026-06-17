@@ -75,6 +75,8 @@ class XlsxParser:
                 'suite': tmp_suite,
                 'name': case_cell.value,
                 'scenario': scenario_cell.value,
+                'expected': '',
+                'description': '',
             }
 
             if row_len >= 4:
