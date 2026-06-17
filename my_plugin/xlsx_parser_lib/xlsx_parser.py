@@ -48,12 +48,14 @@ class XlsxParser:
         suites_counter = 0
         tmp_suite = None
         for idx, row in enumerate(self.ws.iter_rows(), 1):
-            try:
-                suite_cell, case_cell, scenario_cell = row
-            except ValueError:
-                raise InvalidXlsx(
-                    f'Too many values in line: expected 3, got {len(row)}',
-                )
+            row_len = len(row)
+
+            if not (3 <= row_len <= 5):
+                raise InvalidXlsx(f'Invalid number of columns in row {idx}: expected between 3 and 5')
+
+            suite_cell = row[0]
+            case_cell = row[1]
+            scenario_cell = row[2]
 
             if not suite_cell.value and not tmp_suite:
                 raise InvalidXlsx('Empty suite')
@@ -68,14 +70,20 @@ class XlsxParser:
             if not case_cell.value or not scenario_cell.value:
                 raise InvalidXlsx(f'Got empty suite or scenario in line {idx}')
 
-            cases.append(
-                TestCase(
-                    project_id=self.project_id,
-                    suite=tmp_suite,
-                    scenario=scenario_cell.value,
-                    name=case_cell.value,
-                ),
-            )
+            case_kwargs = {
+                'project_id': self.project_id,
+                'suite': tmp_suite,
+                'name': case_cell.value,
+                'scenario': scenario_cell.value,
+            }
+
+            if row_len >= 4:
+                case_kwargs['expected'] = row[4].value
+
+            if row_len == 5:
+                case_kwargs['description'] = row[5].value
+
+            cases.append(TestCase(**case_kwargs))
 
         bulk_create_with_history(cases, TestCase)
         return suites_counter, len(cases)
